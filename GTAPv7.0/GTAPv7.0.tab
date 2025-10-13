@@ -1267,10 +1267,22 @@ Formula (all,c,COMM)(all,a,ACTS)(all,r,REG)
 Zerodivide off;
 
 ! warning IF !
+
+Coefficient (all,c,COMM)(all,a,ACTS)(all,r,REG)
+    MAKESUNIT(c,a,r) # make unit #;
+Zerodivide (zero_by_zero) default 0;
+Formula (all,c,COMM)(all,a,ACTS)(all,r,REG)
+    MAKESUNIT(c,a,r) = MAKES(c,a,r) / MAKES(c,a,r);
+Zerodivide off;
+Formula (all,c,COMM)(all,a,ACTS)(all,r,REG:MAKES(c,a,r) < 0)
+    MAKESUNIT(c,a,r) = 0;
+
+
 Equation E_qca
 # supply of commodities by act. a #
 (all,c,COMM)(all,a,ACTS)(all,r,REG)
-    qca(c,a,r) = qo(a,r) - ETRAQ(a,r) * [ps(c,a,r) - po(a,r)];
+    qca(c,a,r) = MAKESUNIT(c,a,r) * qo(a,r) - MAKESUNIT(c,a,r) * ETRAQ(a,r) * [ps(c,a,r) - po(a,r)];
+
 
 Equation E_po 
 # average unit (tax-exclusive) cost of output of act. a #
@@ -1331,6 +1343,7 @@ Read ESUBQ from file GTAPPARM header "ESBQ";
     the user in the parameter input file.  
 >!
 
+
 Variable (orig_level=VCB)(all,c,COMM)(all,r,REG)
     qc(c,r) # total commodity supply in region r #; 
 Coefficient (all,c,COMM)(all,a,ACTS)(all,r,REG)
@@ -1341,11 +1354,19 @@ Formula (all,c,COMM)(all,a,ACTS)(all,r,REG)
     MAKEBCOMSHR(c,a,r) = MAKEB(c,a,r) / MAKEBCOM(c,r);
 Zerodivide off;
 
-! warning IF !
+Coefficient (all,c,COMM)(all,a,ACTS)(all,r,REG)
+    MAKEBUNIT(c,a,r) # make unit #;
+Zerodivide (zero_by_zero) default 0;
+Formula (all,c,COMM)(all,a,ACTS)(all,r,REG)
+    MAKEBUNIT(c,a,r) = 0;
+Formula (all,c,COMM)(all,a,ACTS)(all,r,REG:MAKEB(c,a,r)>0)
+    MAKEBUNIT(c,a,r) = 1;
+Zerodivide off;
+
 Equation E_pca  
-# CES allocation of commodity output by activity (ESUBQ(c,r) is 1/CES elast.) #
-(all,c,COMM)(all,a,ACTS)(all,r,REG) 
-    pca(c,a,r) = pds(c,r) - ESUBQ(c,r) * [qca(c,a,r) - qc(c,r)];            
+# CES allocation of commodity output by activity (ESUBQ(c,r,t) is 1/CES elast.) #
+(all,c,COMM)(all,a,ACTS)(all,r,REG)
+    pca(c,a,r) = MAKEBUNIT(c,a,r) * pds(c,r) - MAKEBUNIT(c,a,r) * ESUBQ(c,r) * [qca(c,a,r) - qc(c,r)];       
 
 Equation E_qc
 # market clearing condition for total commodity supply #
