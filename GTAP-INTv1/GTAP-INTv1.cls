@@ -20,8 +20,8 @@ au
 avaall
 avareg
 avasec
-delcap
-delmu
+delCap
+delMu
 dpgov
 dppriv
 dpsave
