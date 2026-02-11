@@ -1322,7 +1322,6 @@ Coefficient (parameter)(all,c,COMM)(all,r,REG)
     # 1/CES elast. for sourcing of commodity c produced by various activities #;
 Formula (initial) (all,c,COMM)(all,r,REG) 
     ESUBQ(c,r) = 0.0; ! ie, Default 0.0 means perfect substitutes ! 
-Read ESUBQ from file GTAPPARM header "ESBQ";
 !Assertion (all,c,COMM)(all,r,REG) ESUBQ(c,r) ge 0; !
 !< 
     ESUBQ is 1/CES elasticity. ESUBQ=0.0 means that commodity c produced by 2 

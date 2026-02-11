@@ -1440,7 +1440,6 @@ Coefficient (parameter)(all,c,COMM)(all,r,REG)(all,t,ALLTIME)
 Formula (initial) (all,c,COMM)(all,r,REG)(all,t,ALLTIME) 
     ESUBQ(c,r,t) = 0.0; ! ie, Default 0.0 means perfect substitutes ! 
 !change for compatibility!
-Read !(ifheaderexists)! ESUBQ from file GTAPPARM header "ESBQ";
 Assertion (all,c,COMM)(all,r,REG)(all,t,ALLTIME) ESUBQ(c,r,t) ge 0; 
 !< 
     ESUBQ is 1/CES elasticity. ESUBQ=0.0 means that commodity c produced by 2 
