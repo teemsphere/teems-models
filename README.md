@@ -40,7 +40,7 @@ The [standard GTAP model](https://www.gtap.agecon.purdue.edu/resources/res_displ
 | **Date** | January 2025 |
 | **Files** | `GTAP_INT.tab`, `GTAP_INT.cls` |
 
-An intertemporal extension of the GTAPv6.2 model developed by Kompas and Van Ha. Adds a time dimension for dynamic analysis with forward-looking investment and capital accumulation. TEEMS-compatible version modified by M. Cantele.
+An intertemporal extension of the GTAPv6.2 model developed by Kompas and Van Ha. Adds a time dimension for dynamic analysis with forward-looking investment and capital accumulation.
 
 **References:**
 - Van Ha, P. and T. Kompas, "Solving intertemporal CGE models in parallel using a singly bordered block diagonal ordering technique." *Economic Modelling*, 52, 3-12, 2016. https://doi.org/10.1016/j.econmod.2015.07.011
