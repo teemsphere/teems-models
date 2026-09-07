@@ -9,10 +9,12 @@ Model files for the [Trade and Environment Equilibrium Modeling System (TEEMS)](
 | | |
 |---|---|
 | **Type** | Static |
-| **Date** | September 2003 (TEEMS modifications February 2026) |
+| **Date** | September 2003 (TEEMS modifications September 2026) |
 | **Files** | `GTAPv6.tab`, `GTAPv6.cls` |
 
 The [classic GTAP model](https://www.gtap.agecon.purdue.edu/resources/res_display.asp?RecordID=2458), version 6.2. Includes multiple margin sectors, the CDE regional household demand system, welfare decomposition, import-augmenting technical change, and Baldwin-type capital accumulation effects.
+
+TEEMS modifications relative to the official `gtap.tab`: sluggish endowments are declared explicitly (`land`, `natlres`) rather than read from the `SLUG` parameter; `PROD_COMM` is read from the sets file (with `CGDS_COMM` declared and `TRAD_COMM` derived) so that a single sectoral mapping suffices; `ETRAE` is declared over `ENDWS_COMM`; the `VERNUM` version stamp is dropped; and the standard `gtap.sti` condensation (9 omissions, 60 backsolves) is written into the file as `Omit`/`Backsolve` statements, so the model condenses automatically unless loaded with `ignore_condense = TRUE`.
 
 **References:**
 - Hertel, T.W. and M.E. Tsigas, "Structure of the Standard GTAP Model", Chapter 2 in T.W. Hertel (ed.) *Global Trade Analysis: Modeling and Applications*, Cambridge University Press, 1997.
