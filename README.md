@@ -26,10 +26,12 @@ TEEMS modifications relative to the official `gtap.tab`: sluggish endowments are
 | | |
 |---|---|
 | **Type** | Static |
-| **Date** | June 2017 (TEEMS modifications February 2026) |
+| **Date** | August 2023, version 7.1 (TEEMS modifications September 2026) |
 | **Files** | `GTAPv7.tab`, `GTAPv7.cls` |
 
-The [standard GTAP model](https://www.gtap.agecon.purdue.edu/resources/res_display.asp?RecordID=6438), version 7.0. Supersedes version 6.2 with activity-specific factor income taxes, endowment type flags, refined welfare decomposition distinguishing output and income tax effects, aggregate demand quantity indices, and world GDP indices.
+The [standard GTAP model](https://www.gtap.agecon.purdue.edu/resources/res_display.asp?RecordID=6438), version 7.1 (the August 2023 release of the version 7 file). Supersedes version 6.2 with activity-specific factor income taxes, endowment type flags, refined welfare decomposition distinguishing output and income tax effects, aggregate demand quantity indices, world GDP indices, and the post-simulation welfare-decomposition (WELVIEW), volume (GTAPVOL) and accounting-check (GTAPSUM) reports.
+
+TEEMS modifications relative to the official `gtapv7.tab`: sluggish and sector-specific endowments are declared explicitly (`land`, `natlres`) rather than read from the `ENDOWFLAG` parameter; the `VERNUM` version stamp is dropped; and the standard `gtapv7.sti` condensation (11 omissions, 72 backsolves) is written into the file as `Omit`/`Backsolve` statements, so the model condenses automatically unless loaded with `ignore_condense = TRUE`. Everything else, including the post-simulation report blocks, is the official text.
 
 **References:**
 - Corong, E.L., T.W. Hertel, R.A. McDougall, M.E. Tsigas, and D. van der Mensbrugghe. "The Standard GTAP Model, Version 7." *Journal of Global Economic Analysis*, 2(1), 1-119, 2017. https://doi.org/10.21642/JGEA.020101AF
