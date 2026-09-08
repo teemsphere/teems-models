@@ -36,6 +36,22 @@ TEEMS modifications relative to the official `gtapv7.tab`: sluggish and sector-s
 **References:**
 - Corong, E.L., T.W. Hertel, R.A. McDougall, M.E. Tsigas, and D. van der Mensbrugghe. "The Standard GTAP Model, Version 7." *Journal of Global Economic Analysis*, 2(1), 1-119, 2017. https://doi.org/10.21642/JGEA.020101AF
 
+### GTAP-AEZ — GTAP-AEZ on GTAPv7.1
+
+| | |
+|---|---|
+| **Type** | Static, land use by agro-ecological zone (based on GTAPv7.1) |
+| **Date** | January 2024 AEZ layer on the August 2020 version 7.1 core (TEEMS modifications September 2026) |
+| **Files** | `GTAP-AEZ.tab`, `GTAP-AEZ.cls` |
+
+The [GTAP-AEZ model](https://www.gtap.agecon.purdue.edu/resources/res_display.asp?RecordID=7274): the standard GTAP model with land disaggregated into agro-ecological zones (AEZ), land supplied to crop, grazing and forestry activities through a nested constant-elasticity-of-transformation structure, land-cover accounting (forest, pasture, cropland, unmanaged land) and yield calibration. It runs on the GTAP-AEZ database (GTAP 11/12 AEZ releases); the `teems` R package prepares that database for the model (`GTAP_convert(target = "GTAP-AEZ")`, or automatically in `ems_data()`), including the disaggregated activity sets and mapping that flexagg's `aggdat_aez.tab` synthesizes at aggregation.
+
+TEEMS modifications relative to the official `gtapv7-aez.tab`, the same class as for GTAPv7: the sluggish endowments are declared as the AEZ land endowments (`ENDWS = AEZS`, with the `AEZS` read moved ahead of the endowment classes) and the sector-specific endowment explicitly (`natlres`) rather than read from the `ENDOWFLAG` parameter; the `VERNUM` version stamp is dropped; and the `gtapv7-aez.sti` condensation (11 omissions, 71 backsolves) is written into the file as `Omit`/`Backsolve` statements. Everything else, including the land-use set builders, the `IF` conditionals of the land equations and calibration formulas, and the post-simulation reports, is the official text.
+
+**References:**
+- Baldos, U.L.C. and E.L. Corong. "Development of GTAP version 10 Land Use and Land Cover Data Base for years 2004, 2007, 2011 and 2014." GTAP Research Memorandum No. 36, Center for Global Trade Analysis, Purdue University, 2020.
+- Corong, E.L., T.W. Hertel, R.A. McDougall, M.E. Tsigas, and D. van der Mensbrugghe. "The Standard GTAP Model, Version 7." *Journal of Global Economic Analysis*, 2(1), 1-119, 2017. https://doi.org/10.21642/JGEA.020101AF
+
 ### GTAP-INT — GTAP-INT Version 1
 
 | | |
