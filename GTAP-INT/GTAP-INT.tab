@@ -37,6 +37,9 @@
     Version 1 modified by M. Cantele
         - Syntax, set, and file modifications for compatibility within the
         Trade and Environment Equilibrium Modeling System (TEEMS)
+        - September 2026: the standard gtap.sti omissions written in as an
+        Omit statement (end of file); no backsolves, since the intertemporal
+        system solves faster uncondensed with the bordered matrix methods
 
     Version 1-pre developed by T. Kompas and P. Van Ha, 2016:
 
@@ -4257,9 +4260,16 @@ Equation E_mu_end
 
 
 !<
-    =====================
-    END OF GTAP.TAB FILE
-    =====================
+    Omissions (gtap.sti): exogenous, unshocked technical-change and tax
+    shifters removed from the solved system. To shock one of them, load the
+    model with ems_model(ignore_condense = TRUE).
+>!
+Omit atall avaall tf tfd tfm tgd tgm tpd tpm;
+
+!<
+    =========================
+    END OF GTAP-INT.TAB FILE
+    =========================
 >!
 
 

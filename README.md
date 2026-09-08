@@ -41,24 +41,26 @@ TEEMS modifications relative to the official `gtapv7.tab`: sluggish and sector-s
 | | |
 |---|---|
 | **Type** | Intertemporal (based on GTAPv6.2) |
-| **Date** | January 2015 |
-| **Files** | `GTAP_INT.tab`, `GTAP_INT.cls` |
+| **Date** | January 2025 (TEEMS modifications September 2026) |
+| **Files** | `GTAP-INT.tab`, `GTAP-INT.cls` |
 
 An intertemporal extension of the GTAPv6.2 model developed by Kompas and Van Ha. Adds a time dimension for dynamic analysis with forward-looking investment and capital accumulation.
+
+TEEMS modifications: the standard `gtap.sti` omissions (9 exogenous technical-change and tax shifters) are written into the file as an `Omit` statement. No backsolves are written in: the intertemporal system solves faster uncondensed with the bordered matrix methods. Load with `ignore_condense = TRUE` to shock an omitted variable.
 
 **References:**
 - Van Ha, P. and T. Kompas, "Solving intertemporal CGE models in parallel using a singly bordered block diagonal ordering technique." *Economic Modelling*, 52, 3-12, 2016. https://doi.org/10.1016/j.econmod.2015.07.011
 - Kompas, T. and P. Van Ha, "The 'curse of dimensionality' resolved: The effects of climate change and trade barriers in large dimensional modelling." *Economic Modelling*, 80, 103-110, 2019. https://doi.org/10.1016/j.econmod.2018.08.011
 
-### GTAP-RE — GTAP-RE Version 1
+### GTAP-RE — GTAP-RE Version 2
 
 | | |
 |---|---|
-| **Type** | Intertemporal with rational expectations (based on GTAPv7.0) |
-| **Date** | May 2025 |
+| **Type** | Intertemporal with rational expectations (based on GTAPv7.1) |
+| **Date** | September 2026 (Version 1: May 2025) |
 | **Files** | `GTAP_RE.tab`, `GTAP_RE.cls` |
 
-An intertemporal rational expectations extension of the GTAPv7.0 model. Incorporates forward-looking agent behavior and rational expectations dynamics for multi-period trade and environmental policy analysis.
+An intertemporal rational expectations extension of the GTAPv7.1 model. Version 2 is the official GTAPv7.1 core (as in `GTAPv7.tab` above, post-simulation reports included) time-indexed over `ALLTIME`, with the Version 1 components spliced in: time sets read from `GTAPINT`, a convex-adjustment-cost investment function, capital accumulation over `FWDTIME` and the present-value rational expectations mechanism (`pval`, `ror_act`, the `REDELTA`/`RESEDELTA`/`REEXODELTA` switches). The Version 1 workarounds for the earlier solver are gone. Every coefficient and variable carries the time index except the model constants (`RNREG`, `NTSP`, `DELTAKADJ`, `RORDELTA`, the `RE*DELTA` switches); Version 1 left `aosec` time-invariant, Version 2 indexes it like the other shifters. The `gtapv7.sti` omissions are written in as an `Omit` statement; there are no backsolves, since substitution densifies the block structure the intertemporal matrix methods rely on. On a three-period aggregation the two versions solve to identical results.
 
 **References:**
 - Van Ha, P., T. Kompas, and M. Cantele. "Rethinking the Solution Strategy for Large Recursive CGE Models: Solving Recursive and Rational Expectations CGE Models the Non-Recursive Way." Unpublished manuscript, University of Melbourne.
