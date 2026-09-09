@@ -52,6 +52,25 @@ TEEMS modifications relative to the official `gtapv7-aez.tab`, the same class as
 - Baldos, U.L.C. and E.L. Corong. "Development of GTAP version 10 Land Use and Land Cover Data Base for years 2004, 2007, 2011 and 2014." GTAP Research Memorandum No. 36, Center for Global Trade Analysis, Purdue University, 2020.
 - Corong, E.L., T.W. Hertel, R.A. McDougall, M.E. Tsigas, and D. van der Mensbrugghe. "The Standard GTAP Model, Version 7." *Journal of Global Economic Analysis*, 2(1), 1-119, 2017. https://doi.org/10.21642/JGEA.020101AF
 
+### GTAP-E — GTAP-E on GTAPv7.1
+
+| | |
+|---|---|
+| **Type** | Static, energy substitution and carbon emissions (based on GTAPv7.1) |
+| **Date** | August 2023 energy layer on the August 2020 version 7.1 core (TEEMS modifications September 2026) |
+| **Files** | `GTAP-E.tab`, `GTAP-E.cls` |
+
+The [GTAP-E model](https://www.gtap.agecon.purdue.edu/resources/res_display.asp?RecordID=1668): the standard GTAP model extended with energy substitution and carbon emissions accounting. Energy commodities leave the intermediate-input nest and enter a capital-energy composite, with substitution between coal, oil, petroleum products, gas and electricity in a nested structure; CO2 emissions are tracked by source, and carbon taxes may be levied over regional trading blocs. It runs on the GTAP-E database (GTAP 11/12 E releases); the `teems` R package prepares that database for the model (`GTAP_convert(target = "GTAP-E")`, or automatically in `ems_data()`), including the disaggregated commodity set and mapping and the aggregated energy sets that flexagg's `aggdat_e.tab` synthesizes at aggregation, and binding the database's `SUBE`/`INCE` to the `SUBP`/`INCP` headers the model reads over `TOPP`.
+
+TEEMS modifications relative to the official `gtapv7-e.tab`, the same class as for GTAPv7: the sluggish and sector-specific endowments are declared explicitly (`ENDWS = land`, `ENDWF = natlres`) rather than read from the `ENDOWFLAG` parameter; the `VERNUM` version stamp is dropped; and the `gtapv7-e.sti` condensation (10 omissions, 96 backsolves) is written into the file as `Omit`/`Backsolve` statements. Everything else, including the energy nest set builders, the `IF` conditionals, the carbon accounting and the post-simulation reports, is the official text.
+
+Note that the aggregation must keep the energy commodities distinct. An aggregation that merges them (for example one that maps coal, oil, gas, petroleum products, electricity and gas distribution into a single manufacturing sector) collapses the energy nest onto one element: the model still solves, but there is nothing left for it to substitute between.
+
+**References:**
+- Burniaux, J.-M. and T.P. Truong. "GTAP-E: An Energy-Environmental Version of the GTAP Model." GTAP Technical Paper No. 16, Center for Global Trade Analysis, Purdue University, 2002.
+- McDougall, R. and A. Golub. "GTAP-E: A Revised Energy-Environmental Version of the GTAP Model." GTAP Research Memorandum No. 15, Center for Global Trade Analysis, Purdue University, 2007.
+- Corong, E.L., T.W. Hertel, R.A. McDougall, M.E. Tsigas, and D. van der Mensbrugghe. "The Standard GTAP Model, Version 7." *Journal of Global Economic Analysis*, 2(1), 1-119, 2017. https://doi.org/10.21642/JGEA.020101AF
+
 ### GTAP-INT — GTAP-INT Version 1
 
 | | |
