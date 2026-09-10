@@ -71,6 +71,25 @@ Note that the aggregation must keep the energy commodities distinct. An aggregat
 - McDougall, R. and A. Golub. "GTAP-E: A Revised Energy-Environmental Version of the GTAP Model." GTAP Research Memorandum No. 15, Center for Global Trade Analysis, Purdue University, 2007.
 - Corong, E.L., T.W. Hertel, R.A. McDougall, M.E. Tsigas, and D. van der Mensbrugghe. "The Standard GTAP Model, Version 7." *Journal of Global Economic Analysis*, 2(1), 1-119, 2017. https://doi.org/10.21642/JGEA.020101AF
 
+### GTAP-EP — GTAP-E with GTAP-Power on GTAPv7.1
+
+| | |
+|---|---|
+| **Type** | Static, energy substitution, electricity technologies and carbon emissions (based on GTAPv7.1) |
+| **Date** | August 2023 energy and power layer on the August 2020 version 7.1 core (TEEMS modifications September 2026) |
+| **Files** | `GTAP-EP.tab`, `GTAP-EP.cls` |
+
+The [GTAP-EP model](https://www.gtap.agecon.purdue.edu/resources/res_display.asp?RecordID=1668): GTAP-E extended with the GTAP-Power electricity detail. The single electricity activity is replaced by transmission and distribution together with eleven generation technologies, which enter a nested structure distinguishing base-load from peak-load generation, so that the model represents substitution between generation sources as well as between fuels. It runs on the GTAP-Power database (GTAP 11/12 Power releases, 76 commodities and activities); the `teems` R package prepares that database for the model (`GTAP_convert(target = "GTAP-EP")`, or automatically in `ems_data()`), synthesizing the twenty-seven set headers that flexagg builds at aggregation and binding the database's `SUBE`/`INCE` to the `SUBP`/`INCP` headers the model reads over `TOPP`.
+
+TEEMS modifications relative to the official `gtapv7-ep.tab`, the same class as for GTAPv7: the sluggish and sector-specific endowments are declared explicitly (`ENDWS = land`, `ENDWF = natlres`) rather than read from the `ENDOWFLAG` parameter; the `VERNUM` version stamp is dropped; and the `gtapv7-ep.sti` condensation (10 omissions, 97 backsolves) is written into the file as `Omit`/`Backsolve` statements. Everything else, including the electricity nests, the set builders, the carbon accounting and the post-simulation reports, is the official text.
+
+Note that the aggregation must keep the electricity commodities apart. One that merges a base-load technology with a peak-load one makes the base-load and peak-load input sets overlap and the generation nest ill-defined, so the standard activity mappings cannot be used: the shipped `power` and `power_tech` mappings are built for this database.
+
+**References:**
+- Peters, J.C. "The GTAP-Power Data Base: Disaggregating the Electricity Sector in the GTAP Data Base." *Journal of Global Economic Analysis*, 1(1), 209-250, 2016. https://doi.org/10.21642/JGEA.010104AF
+- Burniaux, J.-M. and T.P. Truong. "GTAP-E: An Energy-Environmental Version of the GTAP Model." GTAP Technical Paper No. 16, Center for Global Trade Analysis, Purdue University, 2002.
+- Corong, E.L., T.W. Hertel, R.A. McDougall, M.E. Tsigas, and D. van der Mensbrugghe. "The Standard GTAP Model, Version 7." *Journal of Global Economic Analysis*, 2(1), 1-119, 2017. https://doi.org/10.21642/JGEA.020101AF
+
 ### GTAP-INT — GTAP-INT Version 1
 
 | | |
