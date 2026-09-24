@@ -90,6 +90,22 @@ Note that the aggregation must keep the electricity commodities apart. One that 
 - Burniaux, J.-M. and T.P. Truong. "GTAP-E: An Energy-Environmental Version of the GTAP Model." GTAP Technical Paper No. 16, Center for Global Trade Analysis, Purdue University, 2002.
 - Corong, E.L., T.W. Hertel, R.A. McDougall, M.E. Tsigas, and D. van der Mensbrugghe. "The Standard GTAP Model, Version 7." *Journal of Global Economic Analysis*, 2(1), 1-119, 2017. https://doi.org/10.21642/JGEA.020101AF
 
+### ORANI-G — ORANI-G 2013 edition
+
+| | |
+|---|---|
+| **Type** | Static, single country (Australia, 37 commodities, 35 industries, 8 occupations, 8 regions) |
+| **Date** | August 2013 (2013 edition of the 2003 model) |
+| **Files** | `ORANI-G.tab`, `ORANI-G.cls`, `ORANI-G-LR.cls` |
+
+The [ORANI-G model](https://www.copsmodels.com/oranig.htm): the generic single-country computable general equilibrium model of the Centre of Policy Studies, with multi-product industries, margins, the linear expenditure system for households, separate export demand schedules for individual and collective exports, the DPSV investment rules, a top-down regional extension and the Fan and GDP decompositions of its post-simulation reports. It is the reference model of the CoPS Practical GE Modelling Course and the basis of many national models.
+
+TEEMS modification relative to the official `oranig.tab`: the investment-rule industry sets `EXOGINV` and `ENDOGINV`, which the ORANIG command files declare with `xSet`/`xSubset`, are declared in the model file so that the closures can refer to them. Everything else is the official 2013 text. The `teems` R package reads its `Write (Set)` statements, the `WAGGSET` aggregation instructions and the ranked report set as described in the manual, holds the `Omit` variables exogenous, and loads its `basedata.har` through the single-file route of `ems_data()` (`ems_data("basedata.har")`, no set mappings). Two closures ship: `ORANI-G.cls` is the short-run closure of `oranigSR.CMF` (the DPSV closure, exchange rate numeraire), `ORANI-G-LR.cls` the long-run closure of `oranigLR.CMF` with that command file's swaps applied (rates of return, employment, the stock and balance-of-trade rules and the investment rules exogenous in place of capital stocks, the wage shifter, their shift variables and industry investment).
+
+**References:**
+- Horridge, M. "ORANI-G: A Generic Single-Country Computable General Equilibrium Model." Centre of Policy Studies and Impact Project, Monash University, 2003 (model files: 2013 edition).
+- Dixon, P.B., B.R. Parmenter, J. Sutton and D.P. Vincent. *ORANI: A Multisectoral Model of the Australian Economy*. North-Holland, Amsterdam, 1982.
+
 ### GTAP-INT — GTAP-INT Version 1
 
 | | |
@@ -131,4 +147,4 @@ model <- ems_model(
 
 ## Attribution
 
-The GTAP modeling framework is developed and maintained by the [Center for Global Trade Analysis](https://www.gtap.agecon.purdue.edu/), Purdue University. The intertemporal extensions (GTAP-INT, GTAP-RE) were developed by Pham Van Ha and Tom Kompas at the University of Melbourne. TEEMS-compatible syntactic modifications were made by Matthew Cantele.
+The GTAP modeling framework is developed and maintained by the [Center for Global Trade Analysis](https://www.gtap.agecon.purdue.edu/), Purdue University. The intertemporal extensions (GTAP-INT, GTAP-RE) were developed by Pham Van Ha and Tom Kompas at the University of Melbourne. ORANI-G is developed and maintained by the [Centre of Policy Studies](https://www.copsmodels.com/), Victoria University (formerly Monash University). TEEMS-compatible syntactic modifications were made by Matthew Cantele.
