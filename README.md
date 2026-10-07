@@ -67,6 +67,7 @@ TEEMS modifications relative to the official `gtapv7-e.tab`, the same class as f
 Note that the aggregation must keep the energy commodities distinct. An aggregation that merges them (for example one that maps coal, oil, gas, petroleum products, electricity and gas distribution into a single manufacturing sector) collapses the energy nest onto one element: the model still solves, but there is nothing left for it to substitute between.
 
 **References:**
+- Corong, E.L. and A. Golub. "The GTAP-E Version 7 Model: An Energy-Environmental Version of the GTAP Model." Center for Global Trade Analysis, Purdue University, 2024.
 - Burniaux, J.-M. and T.P. Truong. "GTAP-E: An Energy-Environmental Version of the GTAP Model." GTAP Technical Paper No. 16, Center for Global Trade Analysis, Purdue University, 2002.
 - McDougall, R. and A. Golub. "GTAP-E: A Revised Energy-Environmental Version of the GTAP Model." GTAP Research Memorandum No. 15, Center for Global Trade Analysis, Purdue University, 2007.
 - Corong, E.L., T.W. Hertel, R.A. McDougall, M.E. Tsigas, and D. van der Mensbrugghe. "The Standard GTAP Model, Version 7." *Journal of Global Economic Analysis*, 2(1), 1-119, 2017. https://doi.org/10.21642/JGEA.020101AF
@@ -86,8 +87,11 @@ TEEMS modifications relative to the official `gtapv7-ep.tab`, the same class as 
 Note that the aggregation must keep the electricity commodities apart. One that merges a base-load technology with a peak-load one makes the base-load and peak-load input sets overlap and the generation nest ill-defined, so the standard activity mappings cannot be used: the shipped `power` and `power_tech` mappings are built for this database.
 
 **References:**
+- Peters, J.C. "GTAP-E-Power: An Electricity-detailed Economy-wide Model." *Journal of Global Economic Analysis*, 1(2), 156-187, 2016.
 - Peters, J.C. "The GTAP-Power Data Base: Disaggregating the Electricity Sector in the GTAP Data Base." *Journal of Global Economic Analysis*, 1(1), 209-250, 2016. https://doi.org/10.21642/JGEA.010104AF
+- Corong, E.L. and A. Golub. "The GTAP-E Version 7 Model: An Energy-Environmental Version of the GTAP Model." Center for Global Trade Analysis, Purdue University, 2024.
 - Burniaux, J.-M. and T.P. Truong. "GTAP-E: An Energy-Environmental Version of the GTAP Model." GTAP Technical Paper No. 16, Center for Global Trade Analysis, Purdue University, 2002.
+- McDougall, R. and A. Golub. "GTAP-E: A Revised Energy-Environmental Version of the GTAP Model." GTAP Research Memorandum No. 15, Center for Global Trade Analysis, Purdue University, 2007.
 - Corong, E.L., T.W. Hertel, R.A. McDougall, M.E. Tsigas, and D. van der Mensbrugghe. "The Standard GTAP Model, Version 7." *Journal of Global Economic Analysis*, 2(1), 1-119, 2017. https://doi.org/10.21642/JGEA.020101AF
 
 ### ORANI-G — ORANI-G 2013 edition
